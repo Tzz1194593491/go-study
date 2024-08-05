@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	. "study/13.json/pojo"
+	. "tang.com/go-study/13.json/pojo"
 )
 
 func main() {
