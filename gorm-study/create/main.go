@@ -3,22 +3,15 @@ package main
 import (
 	"fmt"
 	"github.com/Tzz1194593491/gorm-study/model"
-	"gorm.io/driver/sqlite"
+	"github.com/Tzz1194593491/gorm-study/utils"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 )
 
 func main() {
-	db, err := gorm.Open(sqlite.Open("./test.db"), &gorm.Config{
-		Logger:          logger.Default.LogMode(logger.Info),
-		CreateBatchSize: 2,
-	})
+	db, err := utils.CreateDB()
 	if err != nil {
-		fmt.Println(err)
 		return
 	}
-	_ = db.AutoMigrate(&model.User{})
-
 	createSingle(db)
 	createMany(db)
 	createBySomeFields(db)
